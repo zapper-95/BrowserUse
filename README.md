@@ -1,8 +1,8 @@
 # Browser Use
-Command line code to run BrowserUse.
+Command line code to run BrowserUse, using the DeepSeek API.
 
 ### Set Up
-Create a .env file and type OPENAI_API_KEY=KEY, where KEY is your DeepSeek api key.
+Create a .env file and type OPENAI_API_KEY=KEY, where KEY is your DeepSeek API key.
 
 Make sure you have Python 3.11 installed on your computer, and that it is installed to PATH.
 
