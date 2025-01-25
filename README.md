@@ -1,4 +1,4 @@
-#Browser Use
+# Browser Use
 Command line code to run BrowserUse.
 
 ### Set Up
