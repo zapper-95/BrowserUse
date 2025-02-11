@@ -2,11 +2,27 @@
 Command line code to run BrowserUse, using the DeepSeek API.
 
 ### Set Up
-Create a .env file and type OPENAI_API_KEY=KEY, where KEY is your DeepSeek API key.
+Create a .env file and type `OPENAI_API_KEY=KEY`, where `KEY` is your OpenAI API key.
 
 Make sure you have Python 3.11 installed on your computer, and that it is installed to PATH.
 
-After installing Python, make a virtual environment, and install all the neccecssary packages using `pip install -r requirements.txt`
+It is recommended to use a virtual environment. You can do this with the virtualenv package.
+
+#### Virtual Environment
+```bash
+pip install virtualenv
+```
+```bash
+virtualenv .venv
+source .venv/bin/activate
+```
+
+#### Installing the package
+Install the following packages to your virtual environment
+``` bash
+pip install browser-use
+playwright install
+```
 
 ### Running
 To run, type `python agent.py --task "YOUR_TASK_HERE"`.
