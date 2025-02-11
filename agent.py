@@ -2,13 +2,23 @@ from langchain_openai import ChatOpenAI
 from browser_use import Agent, BrowserConfig
 from pydantic import SecretStr
 from dotenv import load_dotenv
-load_dotenv()
 import asyncio
 import argparse
+import os
+
+load_dotenv()
+
+api_key = os.getenv('OPENAI_API_KEY', '')
+if not api_key:
+	raise ValueError('OPENAI_API_KEY is not set')
+
+
 
 # Initialize the model
-llm=ChatOpenAI(base_url='https://api.deepseek.com/v1', model='deepseek-chat')
-
+llm=ChatOpenAI(
+    model='gpt-4o-mini',
+    api_key=SecretStr(api_key),
+)
 
 async def RunAgent(agent: Agent):
     result = await agent.run()
@@ -25,6 +35,7 @@ def main():
     task=args.task,
     llm=llm,
     use_vision=False,
+    max_failures=5,
     )
 
     asyncio.run(RunAgent(agent))
