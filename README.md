@@ -21,7 +21,7 @@ source .venv/bin/activate
 Install the following packages to your virtual environment
 ``` bash
 pip install browser-use
-playwright install
+sudo playwright install
 ```
 
 ### Running
