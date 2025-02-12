@@ -1,5 +1,5 @@
 # Browser Use
-Command line code to run BrowserUse, using the DeepSeek API.
+Wrapper code to run BrowserUse in the terminal, using o4 mini.
 
 ### Set Up
 Create a .env file and type `OPENAI_API_KEY=KEY`, where `KEY` is your OpenAI API key.
