@@ -1,5 +1,5 @@
 from langchain_openai import ChatOpenAI
-from browser_use import Agent, BrowserConfig
+from browser_use import Agent, BrowserConfig, Browser
 from pydantic import SecretStr
 from dotenv import load_dotenv
 import asyncio
@@ -12,7 +12,13 @@ api_key = os.getenv('OPENAI_API_KEY', '')
 if not api_key:
 	raise ValueError('OPENAI_API_KEY is not set')
 
-
+# Configure the browser to connect to your Chrome instance
+browser = Browser(
+    config=BrowserConfig(
+        # Specify the path to your Chrome executable
+        chrome_instance_path='/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',  # macOS path
+    )
+)
 
 # Initialize the model
 llm=ChatOpenAI(
@@ -28,7 +34,7 @@ async def RunAgent(agent: Agent):
 def main():
 
     parser = argparse.ArgumentParser(description="Run agent with custom task")
-    parser.add_argument("--task", type=str, default="Search what is the tallest ferris wheel in the world", help="Specify the task for the agent")
+    parser.add_argument("--task", type=str, default="Search what is the tallest ferris wheel in the world and write to a google doc", help="Specify the task for the agent")
     args = parser.parse_args()
 
     agent = Agent(
@@ -36,6 +42,7 @@ def main():
     llm=llm,
     use_vision=False,
     max_failures=5,
+    browser=browser,
     )
 
     asyncio.run(RunAgent(agent))
